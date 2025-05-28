@@ -12,7 +12,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigation.navigate('Inicio'); // Redirigir tras iniciar sesión
+      navigation.navigate('Menu'); // Redirigir tras iniciar sesión
     } catch (error) {
       Alert.alert('Error', 'Usuario o contraseña no válido');
     }

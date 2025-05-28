@@ -24,7 +24,7 @@ export  function Usuario() {
     async function fetchUsuario() {
       const user = auth.currentUser;
       if (user) {
-        const docRef = doc(db, 'Usuario', user.uid);
+        const docRef = doc(db, 'usuarios', user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           setUsuario(docSnap.data());
@@ -95,10 +95,7 @@ export  function Usuario() {
       <TextInput style={styles.input} placeholder="Rol" value={form.rol} onChangeText={(text) => handleChange('rol', text)} />
       <Button title="Guardar cambios" onPress={handleUpdate} />
 
-      <Text style={styles.title}>Agregar imagen</Text>
-      <TextInput style={styles.input} placeholder="URL de la imagen" value={nuevaUrl} onChangeText={setNuevaUrl} />
-      <Button title="Agregar" onPress={handleAgregarUrl} />
-
+     
       <Text style={styles.title}>Imágenes guardadas</Text>
       {imagenes.map(img => (
         <View key={img.id} style={styles.imageContainer}>

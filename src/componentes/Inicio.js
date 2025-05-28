@@ -18,8 +18,8 @@ const Inicio = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Bienvenido</Text>
 
-      <Button title="Iniciar sesión" onPress={() => setMostrarModal('login')} />
-      <Button title="Registrarse" onPress={() => setMostrarModal('registro')} />
+      <Button title="Iniciar sesión" onPress={() => setMostrarModal('Login')} />
+      <Button title="Registrarse" onPress={() => setMostrarModal('Registro')} />
 
       <Modal visible={!!mostrarModal} transparent animationType="slide">
         <View style={styles.modal}>

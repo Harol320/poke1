@@ -19,7 +19,7 @@ export  function Menu() {
     { name: 'Login', route: 'Login' },
     { name: 'Registro', route: 'Registro' },
     { name: 'Listar Chistes', route: 'ListarChistes' },
-    { name: 'Ir al menú', route: 'Menu' }
+    
   ];
 
   return (

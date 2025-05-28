@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../../firebase/firebaseConfig'; // Ajusta la ruta según tu configuración
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../../firebase/firebaseConfig';
 import { useNavigation } from '@react-navigation/native';
-
 
 const Registro = () => {
   const [formulario, setFormulario] = useState({
@@ -16,7 +15,6 @@ const Registro = () => {
   });
 
   const [mensaje, setMensaje] = useState('');
-
   const navigation = useNavigation();
   const auth = getAuth();
 
@@ -29,8 +27,7 @@ const Registro = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, formulario.correo, formulario.password);
       const uid = userCredential.user.uid;
 
-      await addDoc(collection(db, 'usuarios'), {
-        id: uid,
+      await setDoc(doc(db, 'usuarios', uid), {
         nombre: formulario.nombre,
         correo: formulario.correo,
         fecha_nacimiento: formulario.fechaNacimiento,
@@ -47,7 +44,6 @@ const Registro = () => {
         telefono: '',
       });
 
-      // Redirigir después de 2 segundos (opcional)
       setTimeout(() => {
         navigation.navigate('Login');
       }, 2000);
